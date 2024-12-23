@@ -1,4 +1,4 @@
-import './style.css';
+import '../style.css';
 
 const list1 : Array<number> = [];
 const list2 : Array<number> = [];
@@ -47,7 +47,7 @@ function getSimilarityScore(listA : number[], listB : number[]) : number {
 }
 
 try {
-  const text = await fetch("../input.txt");
+  const text = await fetch("./src/Day_1/input.txt");
   const textData = await text.text();
   // get all the numbers from the text by splitting string from whitespaces and newlines
   const numbers = textData.split(/\s+/g).map(item=>parseInt(item));
@@ -73,9 +73,10 @@ try {
   
   const distanceBetweenLists = getDistanceBetweenLists(list1,list2);
   const similarityScore = getSimilarityScore(list1,list2);
-  console.log("RESULT :",distanceBetweenLists);
-  console.log("BUFFER: ",similarityScore);
-
+  const solution = `DISTANCE BETWEEN THE LISTS : ${distanceBetweenLists}
+  SIMILARITY SCORE: ${similarityScore}`;
+  const element = document.getElementById('app');
+  element!.innerText = solution;
 }
 catch(error) {
   console.error(error);
